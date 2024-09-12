@@ -3,82 +3,13 @@
 using namespace std;
 
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    int a, b, c, d, t;
+    cin >> a >> b >> c >> d >> t;
 
-    int n, t;
-    cin >> n >> t;
-    int a[n];
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
-    }
-
-    long long soma = 0;
-
-    switch(t){
-        case 1:
-            cout << 7 << "\n";
-            break;
-        case 2:
-            if(a[0] > a[1]){
-                cout << "Bigger\n";
-            }else if(a[0] == a[1]){
-                cout << "Equal\n";
-            }else{
-                cout << "Smaller\n";
-            }
-            break;
-        case 3:
-            for(int i = 0; i < 3; i++){
-                for(int j = 0; j < 2; j++){
-                    if(a[j] > a[j+1]){
-                        int aux = a[j];
-                        a[j] = a[j+1];
-                        a[j+1] = aux;
-                    }
-                }
-            }
-            cout << a[1] << "\n";
-            break;
-        case 4:
-            for(auto num : a){
-                soma += num;
-            }
-            cout << soma << "\n";
-            break;
-        case 5:
-            for(int i = 0; i < n; i++){
-                if(a[i] % 2 == 0){
-                    soma += a[i];
-                }
-            }
-            cout << soma << "\n";
-            break;
-        case 6:
-            for(auto num : a){
-                cout << (char)('a' + (num % 26));
-            }
-            cout << "\n";
-            break;
-        case 7:
-            int i = 0;
-            int cont = 0;
-            while(true){
-                i = a[i];
-                if(i < 0 || i >= n){
-                    cout << "Out\n";
-                    break;
-                }
-                if(i == n-1){
-                    cout << "Done\n";
-                    break;
-                }
-                if(cont > n){
-                    cout << "Cyclic\n";
-                    break;
-                }
-                cont++;
-            }
-            break;
+    int dist = abs(a - c) + abs(b - d);
+    if(dist == t || (t > dist && (t - dist) % 2 == 0)){
+        cout << "Y\n";
+    }else{
+        cout << "N\n";
     }
 }

@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    // ios::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
     map<string, map<string, string>> m;
     m["+x"]["+y"] = "+y";

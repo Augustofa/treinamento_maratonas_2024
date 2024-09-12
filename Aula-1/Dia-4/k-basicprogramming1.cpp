@@ -29,15 +29,7 @@ int main(){
             }
             break;
         case 3:
-            for(int i = 0; i < 3; i++){
-                for(int j = 0; j < 2; j++){
-                    if(a[j] > a[j+1]){
-                        int aux = a[j];
-                        a[j] = a[j+1];
-                        a[j+1] = aux;
-                    }
-                }
-            }
+            sort(a, a+3);
             cout << a[1] << "\n";
             break;
         case 4:
