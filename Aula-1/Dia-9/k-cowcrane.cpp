@@ -15,26 +15,25 @@ int main(){
     int mBetw = abs(M - l);
     int lBetw = abs(L - m);
 
-    
-
-    int t = 0, x = 0;
-    int low, high;
-    if(m > 0){
-        low = 0;
-        high = m;
+    int m1, l1;
+    if((l >= 0 && l < m && m <= L) || (l <= 0 && m < l && L <= m)){
+        m1 = abs(m) + mMove;
+        l1 = m1 + abs(M - m) + abs(L - m);
     }else{
-        low = m;
-        high = 0;
+        m1 = abs(m) + mMove;
+        l1 = m1 + mBetw + lMove;
     }
-    if((l >= low && l <= high) && L > high){
-        
-    }
-    int m1 = abs(m) + mMove;
-    int l1 = m1 + mBetw + lMove;
     
-
-    int l2 = abs(l) + lMove;
-    int m2 = l2 + lBetw + mMove;
+    
+    int m2, l2;
+    if((m >= 0 && m < l && l <= M) || (m <= 0 && l < m && M <= l)){
+        l2 = abs(l) + lMove;
+        m2 = l2 + abs(L - l) + abs(M - l);
+    }else{
+        l2 = abs(l) + lMove;
+        m2 = l2 + lBetw + mMove;
+    }
+    
 
     if((m1 <= tm && l1 <= tl) || (m2 <= tm && l2 <= tl)){
         cout << "possible\n";
