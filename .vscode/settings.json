@@ -8,6 +8,8 @@
         "*.tcc": "cpp",
         "cmath": "cpp",
         "ratio": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "chrono": "cpp",
+        "algorithm": "cpp"
     }
 }
