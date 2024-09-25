@@ -7,7 +7,6 @@ int main(){
     getline(cin, t);
     getline(cin, p);
 
-
     bool res = false;
     for(int i = 0; i < t.size(); i++){
         if(t[i] == p[0]){
