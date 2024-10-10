@@ -19,58 +19,45 @@ int main(){
     }
 
     while(t--){
-        char cxi, cxf;
-        int xi, yi, xf, yf;
-        cin >> cxi >> yi >> cxf >> yf;
-        xi = 8 - (cxi - 'A');
-        xf = 8 - (cxf - 'A');
+        char cx1, cx2;
+        int x1, y1, x2, y2;
+        cin >> cx1 >> y1 >> cx2 >> y2;
+        x1 = (cx1 - 'A') + 1;
+        x2 = (cx2 - 'A') + 1;
 
-        if(board[xi][yi] != board[xf][yf]){
+        if(board[x1][y1] != board[x2][y2]){
             cout << "Impossible\n";
             continue;
         }
 
-        int midX = xi, midY = yi;
-        while(!(midX-midY == xf-yf || midX+midY == xf+yf) && midX <= 8 && midY <= 8){
-            midX++;
-            midY++;
-        }
-        if(midX > 8 || midY > 8){
-            midX = xi;
-            midY = yi;
-            while(!(midX-midY == xf-yf || midX+midY == xf+yf) && midX <= 8 && midY >= 1){
-                midX++;
-                midY--;
-            }
-            if(midX > 8 || midY < 1){
-                midX = xi;
-                midY = yi;
-                while(!(midX-midY == xf-yf || midX+midY == xf+yf) && midX >= 1 && midY <= 8){
-                    midX--;
-                    midY++;
-                }
-                if(midX > 1 || midY < 8){
-                    midX = xi;
-                    midY = yi;
-                    while(!(midX-midY == xf-yf || midX+midY == xf+yf) && midX >= 1 && midY >= 1){
-                        midX--;
-                        midY--;
+        int midX, midY;
+        bool end;
+
+        if(x1 == x2 && y1 == y2){
+            cout << 0 << " " << cx1 << " " << y1;
+        }else{
+            if(!((x1-y1 == x2-y2 || x1+y1 == x2+y2))){
+                for(int i = 1; i <= 8; i++){
+                    for(int j = 1; j <= 8; j++){
+                        if((i-j == x2-y2 || i+j == x2+y2) && ((i-j == x1-y1 || i+j == x1+y1))){
+                            midX = i;
+                            midY = j;
+                            end = true;
+                            break;
+                        }
+                    }
+                    if(end){
+                        break;
                     }
                 }
-            }
-        }
-        
-        if(xi == xf && yi == yf){
-            cout << 0 << " " << cxi << " " << yi;
-        }else{
-            if(midX == xf && midY == yf){
-                cout << 1 << " " << cxi << " " << yi << " " << (char)((8 - midX) + 'A') << " " << midY;
+                cout << 2 << " " << cx1 << " " << y1 << " " << (char)(midX + 'A' - 1) << " " << midY << " ";
+                cout << (char)(x2 + 'A' - 1) << " " << y2;         
             }else{
-                cout << 2 << " " << cxi << " " << yi << " " << (char)((8 - midX) + 'A') << " " << midY << " ";
-                cout << (char)((8 - xf) + 'A') << " " << yf;
+                cout << 1 << " " << cx1 << " " << y1 << " " << cx2 << " " << y2;
             }
-            
         }
+
+        
         cout << "\n";
 
     }
